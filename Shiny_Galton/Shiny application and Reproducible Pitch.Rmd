@@ -17,7 +17,7 @@ In this application I developed the linear model and made the prediction for chi
 Model is based on well-known Galton  dataset - https://rdrr.io/cran/HistData/man/GaltonFamilies.html.
 
 Application is available on 
-http://pavelppz.shinyapps.io/Shiny_Galton/
+https://github.com/PavelPPZ/Shiny-Application-and-Reproducible-Pitch/tree/main/Shiny_Galton
 
 Application files are available on
 https://github.com/PavelPPZ/Shiny-Application-and-Reproducible-Pitch

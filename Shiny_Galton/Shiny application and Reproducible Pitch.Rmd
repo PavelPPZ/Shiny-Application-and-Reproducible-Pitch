@@ -1,0 +1,61 @@
+---
+title: "Children Height Prediction"
+author: "Pavel"
+date: "2024-03-06"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Children Height Prediction 
+
+In this application I developed the linear model and made the prediction for children height based on 1) averaged parent height (midparent Height), 2) child gender and 3) number of the child in the family.
+
+Model is based on well-known Galton  dataset - https://rdrr.io/cran/HistData/man/GaltonFamilies.html.
+
+Application is available on 
+http://pavelppz.shinyapps.io/Shiny_Galton/
+
+Application files are available on
+https://github.com/PavelPPZ/Shiny-Application-and-Reproducible-Pitch
+
+## Application interface
+
+In the left panel you can enter 3 parameters: 1) the averaged parent height (midparent Height) by slider, 2) child gender by tick box and 3) the number of the child in the family by slider. 
+
+In the right panel you will see the results of the height prediction of the child based on linear model.
+
+Results are presented in the text format and in the graphical form. 
+
+Results are interactive, as soon as you change the input parameters, you see the results of the child height prediction immediately.
+
+## Model Desription
+I'm using the simple linear model with 3 parameters 
+
+```{r}
+        library(shiny)
+        suppressMessages(library(dplyr)) 
+        library(ggplot2)
+        library(HistData)
+
+data(GaltonFamilies)
+
+LM <- lm(childHeight ~ midparentHeight+gender+childNum,GaltonFamilies)
+
+```
+
+Model is based on GaltonFamilies data.
+
+## Model Quality
+
+As expected the quality of such simple model with 3 parameters is not very high. It can be assessed using model_performance function.
+```{r}
+suppressWarnings(library(performance))
+model_performance(LM)
+```
+
+As you see the R-squared is low, so the quality of the model is not high.
+
